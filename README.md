@@ -3,16 +3,16 @@ Assignment of Operating System
 
 ## Goal
 
-The goal of this lab is implementing a Morse-based Twitter
+The goal of this lab is implementing a Morse-based Twitter.
+
 The system sends Tweets composed of maximum 140 characters
+* For the sake of simplicity we assume only uppercase characters
+* Numbers and punctuation characters are not allowed.
 
 The systems sends a pre-defined set of messages, one after the other
+* Each message is sent (possibly multiple times) for a duration of 180 seconds
+* After 180 seconds since starting displaying a message, the display is interrupted for 0.5 seconds, and then the display of the next message is started
 
-For the sake of simplicity we assume only uppercase characters
-Numbers and punctuation characters are not allowed
-Each message is sent (possibly multiple times) for a duration of 180 seconds
-After 180 seconds since starting displaying a message, the display is interrupted for 0.5 seconds, and
-then the display of the next message is started
 The pre-defined messages are (from Fortune Cookie):
 * A FEATHER IN THE HAND IS BETTER THAN A BIRD IN THE AIR
 * A SHORT PENCIL IS USUALLY BETTER THAN A LONG MEMORY ANY DAY
