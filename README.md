@@ -21,16 +21,12 @@ The pre-defined messages are (from Fortune Cookie):
 * ALL THE EFFORT YOU ARE MAKING WILL ULTIMATELY PAY OFF
 
 Remember that:
-* Morse coding
 * The dot is coded as symbol “ 1 ”
 * The dash is coded as symbol “111”
 * A pause “ 0 ” shall be inserted after each symbol
-* After each codeword an inter-codeword pause shall be
-* inserted, corresponding to “ 000 ”
-* After each word, an inter-word pause shall be inserted,
-* corresponding to “ 0000 ”
-* Each bit (“ 0 ”/” 1 ”) shall be displayed on a LED (or using
-* printf)
+* After each codeword an inter-codeword pause shall be inserted, corresponding to “ 000 ”
+* After each word, an inter-word pause shall be inserted, corresponding to “ 0000 ”
+* Each bit (“ 0 ”/” 1 ”) shall be displayed on a LED (or using printf)
 * The bit timing is 100msec
 
 Propose a suitable architecture for generating the needed
