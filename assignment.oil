@@ -1,0 +1,93 @@
+OIL_VERSION = "2.5" : "test" ;
+
+CPU test {    
+  OS config {
+    STATUS = STANDARD;
+    BUILD = TRUE {
+      TRAMPOLINE_BASE_PATH = "../../../..";
+      APP_NAME = "trampuinoAssignment";
+      APP_SRC = "assignment.cpp";
+      CPPCOMPILER = "avr-g++";
+      COMPILER = "avr-gcc";
+      LINKER = "avr-gcc";
+      ASSEMBLER = "avr-gcc";
+      COPIER = "avr-objcopy";
+      SYSTEM = PYTHON;
+
+      LIBRARY = serial;
+    };
+
+    SYSTEM_CALL = TRUE;
+  };
+
+  APPMODE stdAppmode {};
+
+  COUNTER SystemCounter {
+    MINCYCLE = 1;
+    MAXALLOWEDVALUE = 176269;
+    TICKSPERBASE = 1;
+  };
+
+
+  ALARM alarmToSentence {    
+    COUNTER= SystemCounter;
+    ACTION = ACTIVATETASK {
+      TASK = newSentenceTask;
+    };
+    AUTOSTART = TRUE {
+      ALARMTIME = 175781; // start at 180 s
+      CYCLETIME = 176269; // repeat each 180,5 s
+      APPMODE = stdAppmode;
+    };
+  };
+
+  ALARM alarmToPrint {
+    COUNTER= SystemCounter;
+    ACTION = ACTIVATETASK {
+      TASK = prinTask;
+    };
+    AUTOSTART = TRUE {
+      ALARMTIME = 98; // start at 0,1 sb
+      CYCLETIME = 98; // start after 0,1 s
+      APPMODE = stdAppmode;
+    };
+  };
+  
+  TASK newSentenceTask {
+    PRIORITY = 40;
+    AUTOSTART = FALSE;
+    ACTIVATION = 1;
+    SCHEDULE = NON;
+    //STACKSIZE = 32;
+  };
+
+  TASK codTask {
+    PRIORITY = 20;
+    AUTOSTART = TRUE {
+      APPMODE = stdAppmode;
+    };
+    ACTIVATION = 1;
+    SCHEDULE = FULL;
+    //STACKSIZE = 32;
+  };
+
+  TASK translateTask {
+    PRIORITY = 10;
+    AUTOSTART = TRUE {
+      APPMODE = stdAppmode;
+    };
+    ACTIVATION = 1;
+    SCHEDULE = FULL;
+    //STACKSIZE = 32;
+  };
+
+  TASK prinTask {
+    PRIORITY = 30;
+    AUTOSTART = TRUE {
+      APPMODE = stdAppmode;
+    };
+    ACTIVATION = 1;
+    SCHEDULE = NON;
+  };
+ 
+};
